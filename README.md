@@ -1,6 +1,6 @@
 # oepnEggie
 
-oepnEggie的目标是实现一个golang http包中的web服务器
+oepnEggie的目标是实现一个基于linux的高性能web服务器
 
 简单列一下项目规划：
 

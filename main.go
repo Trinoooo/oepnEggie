@@ -1,7 +1,10 @@
 package main
 
-import "log"
+import (
+	"github.com/Trinoooo/oepnEggie/logs"
+)
 
 func main() {
-	log.Println("hello world openEggie!")
+	logs.V1().Println("hello world openEggie!")
+	// do something here
 }

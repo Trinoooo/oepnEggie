@@ -19,3 +19,9 @@
 
 # Go workspace file
 go.work
+
+# jetbrain相关
+.idea
+
+# macos相关
+.DS_Store

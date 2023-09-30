@@ -1,5 +1,7 @@
 # oepnEggie
 
+**Working in progress my honey**:smiley:
+
 oepnEggie的目标是实现一个**基于linux的高性能web服务器**
 
 简单列一下项目规划：

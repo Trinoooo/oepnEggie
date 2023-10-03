@@ -3,21 +3,23 @@ package mistake
 type ServerMistakeCode int
 
 const (
-	invalidCode      ServerMistakeCode = 10000
-	listenFailedCode ServerMistakeCode = 10001
-	serverCloseCode  ServerMistakeCode = 10002
-	connExistCode    ServerMistakeCode = 10003
-	connCloseCode    ServerMistakeCode = 10004
+	invalidCode          ServerMistakeCode = 10000
+	listenFailedCode     ServerMistakeCode = 10001
+	serverCloseCode      ServerMistakeCode = 10002
+	connExistCode        ServerMistakeCode = 10003
+	connCloseCode        ServerMistakeCode = 10004
+	networkNoSupportCode ServerMistakeCode = 10005
 )
 
 type ServerMistakeMsg string
 
 const (
-	invalidMsg      ServerMistakeMsg = "param invalid"
-	listenFailedMsg ServerMistakeMsg = "listen to host:port failed"
-	serverCloseMsg  ServerMistakeMsg = "server close called"
-	connExistMsg    ServerMistakeMsg = "connect already exist"
-	connCloseMsg    ServerMistakeMsg = "connect close failed"
+	invalidMsg          ServerMistakeMsg = "param invalid"
+	listenFailedMsg     ServerMistakeMsg = "listen to host:port failed"
+	serverCloseMsg      ServerMistakeMsg = "server close called"
+	connExistMsg        ServerMistakeMsg = "connect already exist"
+	connCloseMsg        ServerMistakeMsg = "connect close failed"
+	networkNoSupportMsg ServerMistakeMsg = "network not support"
 )
 
 var (
@@ -40,5 +42,9 @@ var (
 	connCloseMistake = ServerMistake{
 		code: connCloseCode,
 		msg:  connCloseMsg,
+	}
+	networkNoSupportMistake = ServerMistake{
+		code: networkNoSupportCode,
+		msg:  networkNoSupportMsg,
 	}
 )

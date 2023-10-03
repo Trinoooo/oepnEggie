@@ -1,14 +1,12 @@
-package impl
+package mux
 
 import (
+	"github.com/Trinoooo/oepnEggie"
 	"github.com/Trinoooo/oepnEggie/logs"
 	"github.com/Trinoooo/oepnEggie/mistake"
 	"github.com/Trinoooo/oepnEggie/types"
 	"sync"
 )
-
-// Handler 请求处理器
-type Handler func(req types.HttpRequester, resp types.HttpResponser) error
 
 // HandlerSet 多路复用处理器集合
 type HandlerSet map[types.Method]*Item
@@ -20,18 +18,8 @@ type Item struct {
 }
 
 type DefaultMux struct {
-	srv *Server
+	srv *oepnEggie.Server
 	hs  HandlerSet
-}
-
-func NewDefaultMux(server *Server) *DefaultMux {
-	return &DefaultMux{
-		srv: server,
-		hs: map[types.Method]*Item{
-			types.Get:  {},
-			types.Post: {},
-		},
-	}
 }
 
 func (dm *DefaultMux) Get(path string, handler Handler) error {
@@ -63,5 +51,16 @@ func (dm *DefaultMux) commonRegister(method types.Method, path string, handler H
 		return err
 	}
 	item.m[path] = handler
+	return nil
+}
+
+type DefaultMuxBuilder struct {
+}
+
+func NewDefaultMuxBuilder() *DefaultMuxBuilder {
+	return &DefaultMuxBuilder{}
+}
+
+func (dmb *DefaultMuxBuilder) Build() *DefaultMux {
 	return nil
 }

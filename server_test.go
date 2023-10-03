@@ -1,6 +1,7 @@
-package impl
+package oepnEggie
 
 import (
+	"github.com/Trinoooo/oepnEggie/impl"
 	"github.com/Trinoooo/oepnEggie/logs"
 	"github.com/Trinoooo/oepnEggie/types"
 	"github.com/luci/go-render/render"
@@ -37,7 +38,7 @@ func TestServer_Serve(t *testing.T) {
 	wg.Add(1)
 	go func() {
 		defer wg.Done()
-		err := server.Serve()
+		err := impl.server.Serve()
 		if err != nil {
 			logs.V1().Println(err)
 		}
@@ -47,7 +48,7 @@ func TestServer_Serve(t *testing.T) {
 	signal.Notify(signalCh, os.Kill, os.Interrupt)
 	select {
 	case <-signalCh:
-		err := server.Close()
+		err := impl.server.Close()
 		if err != nil {
 			logs.V1().Println(err)
 		}

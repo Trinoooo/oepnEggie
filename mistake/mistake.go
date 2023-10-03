@@ -14,11 +14,7 @@ func (se *ServerMistake) Error() string {
 	return fmt.Sprintf("[ code: %d, message: %s ]", se.code, se.msg)
 }
 
-func (se *ServerMistake) Unwrap(err error) error {
-	se, ok := err.(*ServerMistake)
-	if !ok {
-		return nil
-	}
+func (se *ServerMistake) Unwrap() error {
 	return se.err
 }
 
@@ -40,6 +36,10 @@ func NewConnExist() *ServerMistake {
 
 func NewConnClose() *ServerMistake {
 	return &connCloseMistake
+}
+
+func NewNetworkNoSupport() *ServerMistake {
+	return NewNetworkNoSupport()
 }
 
 func NewWithCode(err *ServerMistake, code ServerMistakeCode) *ServerMistake {
